@@ -6,6 +6,11 @@ import sys
 
 # TODO: Implement functionality to search for a proof 
 
+def get_last_block():
+    response = requests.get('http://localhost:5000/last_block')
+    return response.json()
+
+
 
 if __name__ == '__main__':
     # What node are we interacting with?
