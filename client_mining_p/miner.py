@@ -53,16 +53,20 @@ if __name__ == '__main__':
         response = requests.get(url = node + "/last_block")
         response_data = response.json()
         last_block = response_data['last_block']
-        print(last_block)
+    
         proof = proof_of_work(last_block)
 
-        # TODO: Get the last proof from the server and look for a new one
-        # TODO: When found, POST it to the server {"proof": new_proof}
-        # TODO: We're going to have to research how to do a POST in Python
-        # HINT: Research `requests` and remember we're sending our data as JSON
-        # TODO: If the server responds with 'New Block Forged'
-        # add 1 to the number of coins mined and print it.  Otherwise,
-        # print the message from the server.
-        pass
+        data_to_send = {
+            "proof": proof
+        }
+
+        response = requests.post(url = node + "/mine", json = data_to_send)
+        response_data = response.json
+
+        if response_data['message'] == "New Block Forged":
+            coins_mined += 1
+            print(response_data["message"])
+        else:
+            print("Failed")
 
 
