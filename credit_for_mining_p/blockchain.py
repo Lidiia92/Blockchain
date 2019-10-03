@@ -189,7 +189,7 @@ def mine():
         blockchain.new_transaction(sender="0", recipient=miner_id, amount=1)
 
         # Forge the new Block by adding it to the chain
-        previous_hash = blockchain.hash(last_block)
+        previous_hash = blockchain.hash(blockchain.last_block)
         block = blockchain.new_block(proof, previous_hash)
 
         # Send a response with the new block
