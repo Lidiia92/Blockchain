@@ -51,6 +51,8 @@ def get_id():
         return f
     else:
         random_id = uuid.uuid1()
+        str(random_id)
+        print(random_id)
         converted_id = random_id.replace('-', '')
 
         f = open('./my_id.txt', 'a+')  
@@ -81,7 +83,7 @@ if __name__ == '__main__':
 
         data_to_send = {
             "proof": proof,
-             "id": miner_id
+             "miner_id": miner_id
         }
 
         response = requests.post(url = node + "/mine", json = data_to_send)

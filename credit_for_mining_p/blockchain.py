@@ -177,7 +177,7 @@ def mine():
 
     data = request.get_json()
     proof = data['proof']
-    miner_id = data['id']
+    miner_id = data['miner_id']
 
     if blockchain.valid_proof(block_string, proof):
 
@@ -205,7 +205,7 @@ def mine():
         response = {
             "message" : "Invalid proof"
         }
-        return jsonify(response), 400
+        return jsonify(response), 200
 
 
 
