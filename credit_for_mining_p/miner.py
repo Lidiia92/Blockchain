@@ -54,6 +54,7 @@ def get_id():
         str(random_id)
         print(random_id)
         converted_id = random_id.replace('-', '')
+        return converted_id
 
         f = open('./my_id.txt', 'a+')  
         f.write(converted_id)
